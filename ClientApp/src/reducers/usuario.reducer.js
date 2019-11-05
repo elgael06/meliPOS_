@@ -1,7 +1,7 @@
 
 const Usuario = (
     state={
-        id_usuario:0,
+        id:0,
         usuario:'',
         nombre:''
     },actions

@@ -1,13 +1,15 @@
 //librerias
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+import { connect } from 'react-redux';
+import { REMOVE_USER } from '../../actions';
+import {Switch, Route, Redirect } from "react-router-dom";
 //estilos
-import './styles.css'
+import './styles.css';
+//componentes
+import Home from '../Home';
+import Admin from '../Admin';
+import Sales from '../Sales';
+import MenuBar from './MenuBar';
 
 const App=({evRemoveUser})=> {
   const salir = e =>{
@@ -17,13 +19,26 @@ const App=({evRemoveUser})=> {
   return (<div className="App">
       <label >page main <b>App.</b></label>
       <button onClick={salir}>salir</button>
-      <Router>
-            <Switch>
-                <Route exact={true} path="/" component={()=><h1>Home</h1>} />
-                <Route exact={true} path="/login" component={()=><Redirect to="/" />} />
-            </Switch>
-        </Router>
+	  <hr/>
+	  <MenuBar />
+        <Switch>
+        	<Route exact path="/" component={Home} />
+        	<Route exact path="/home" component={Home} />
+        	<Route exact path="/admin" component={Admin} />
+        	<Route exact path="/Sales" component={Sales} />
+            <Route exact path="/login" component={()=><Redirect to="/" />} />
+        </Switch>
     </div>);
 }
 
-export default App;
+const mapStateProps=()=>({
+
+});
+
+const mapDispatchToProps = dispatch =>({
+    evRemoveUser(){
+        dispatch(REMOVE_USER());
+    }
+});
+
+export default connect(mapStateProps,mapDispatchToProps)(App);
