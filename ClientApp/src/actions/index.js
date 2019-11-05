@@ -14,3 +14,15 @@ export const REMOVE_USER =()=>({
 export const GET_USER =()=>({
     type:'get_user'
 });
+
+/**
+ * RouterApp
+ */
+export const ADD_ROUTE =route=>({
+    route,
+    type:'add_route'
+
+});
+export const LOGIN_ROUTER =()=>({
+    type:'login_route'
+});

@@ -2,11 +2,8 @@
 import React,{useState,Fragment} from 'react';
 import { connect } from 'react-redux';
 import { inicio_sesion } from '../../conexiones';
-import { ADD_USER } from '../../actions';import {
-    Switch,
-    Route,
-    Redirect
-  } from "react-router-dom";
+import { ADD_USER, ADD_ROUTE } from '../../actions';
+import { Switch, Route, Redirect } from "react-router-dom";
 
 const Login =({actions})=>{
     const [id,setId] = useState('');
@@ -47,6 +44,7 @@ const mapStateProps=()=>({
 const mapDispatchToProps = dispatch =>({
     actions(user){
         dispatch(ADD_USER(user));
+        dispatch(ADD_ROUTE('/home'))
     }
 });
 

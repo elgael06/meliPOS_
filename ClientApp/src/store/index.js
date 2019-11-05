@@ -5,7 +5,8 @@ import reducers from '../reducers/index.reducers';
 
 
 const initialState = {
-    Usuario: JSON.parse(localStorage.User || null)
+    Usuario: JSON.parse(localStorage.User || null),
+    RouteApp:'/home'
 };
 
 export default createStore(reducers,initialState);
