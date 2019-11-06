@@ -11,6 +11,7 @@ import Admin from '../Admin';
 import Sales from '../Sales';
 import MenuBar from './MenuBar';
 import Monitors from '../Monitors';
+import NavHead from './NavHead';
 
 const App=({evRemoveUser})=> {
   const salir = e =>{
@@ -18,6 +19,7 @@ const App=({evRemoveUser})=> {
     evRemoveUser();
   }
   return (<div className="App">
+	  	<NavHead />
     	<strong >page main App.</strong>
     	<button onClick={salir}>salir</button>
 		<hr/>

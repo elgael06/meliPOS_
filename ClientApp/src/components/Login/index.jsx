@@ -15,7 +15,7 @@ const Login =({actions})=>{
             let user = await inicio_sesion(id,password);
             actions(user)
         }catch(err){
-            console.log(err);
+            console.log("Error Logeo ...",err);
         }
     }
 
