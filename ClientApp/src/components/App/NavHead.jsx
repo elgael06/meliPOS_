@@ -38,7 +38,7 @@ const ContenWrapperHead =({usuario,evRemoveUser})=>{
             </button>
             <ul className="nav ml-auto">
                 <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" id="appsDropdown" data-toggle="dropdown" aria-expanded="false">
+                    <span className="nav-link" id="appsDropdown" data-toggle="dropdown" aria-expanded="false">
                         <i className="mdi mdi-apps mdi-1x"></i>
                         <div className="dropdown-menu navbar-dropdown dropdown-menu-right" aria-labelledby="appsDropdown">
                             <div className="dropdown-header">
@@ -46,10 +46,10 @@ const ContenWrapperHead =({usuario,evRemoveUser})=>{
                                 <p className="dropdown-title-text mt-2">Authentication required for 3 apps</p>
                             </div>
                         </div>
-                    </a>
+                    </span>
                 </li>
                 <li className="nav-item dropdown"> 
-                    <span className="btn btn-danger btn-block btn-rounded" onClick={salir}>
+                    <span className="btn btn-danger btn-rounded social-icon-btn" onClick={salir}>
                         <i className="mdi mdi-account-key text-white"></i>
                     </span>
                 </li>
@@ -59,7 +59,7 @@ const ContenWrapperHead =({usuario,evRemoveUser})=>{
 }
 
 const mapStateProps= state=>({
-    usuario:state.Usuario.nombre
+    usuario:state.Usuario.id
 });
 
 const mapDispatchToProps = dispatch =>({
