@@ -9,7 +9,7 @@ const SiderBar =({usuario,change_route})=>{
     return(<div className="sidebar">
         <div className="user-profile">
             <div className="info-wrapper">
-                <p className="user-name">{usuario}</p>
+                <p className="user-name">Hola :<u>{usuario}.</u></p>
             </div>
         </div>
         <ul className="navigation-menu">
@@ -26,15 +26,12 @@ const SiderBar =({usuario,change_route})=>{
             <li className="link-title">
                 <Link to="/Monitors" onClick={()=>change_route('/Monitors')} >MONITORS</Link>
             </li>
-            <li className="link-title">
-                <Link to="/login" onClick={()=>change_route('/home')} >LOGIN</Link>
-            </li>
         </ul>
     </div>);
 }
 
 const mapStateProps= state=>({
-    usuario:state.Usuario.nombre
+    usuario:state.Usuario.id
 });
 
 const mapDispatchToProps = dispatch =>({

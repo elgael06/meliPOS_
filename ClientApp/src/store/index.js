@@ -3,7 +3,6 @@ import { createStore } from 'redux';
 // cargamos nuestros reducers (ya combinados)
 import reducers from '../reducers/index.reducers';
 
-
 const initialState = {
     Usuario: JSON.parse(localStorage.User || null),
     RouteApp:'/home'

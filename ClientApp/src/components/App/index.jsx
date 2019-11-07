@@ -18,7 +18,7 @@ const App=()=> {
 	  	<NavHead />
 		<div className="page-body">
 			<SiderBar />
-			<div className="page-content-wrapper">
+			<div className="page-content-wrapper bg-white">
 				<div className="page-content-wrapper-inner">
 					<div className="content-viewport">
 						<Switch>
@@ -31,7 +31,7 @@ const App=()=> {
 						</Switch>
 					</div>
 				</div>
-				<footer className="footer">
+				<footer className="footer bg-gray">
 					<div className="row">
 						<div className="col-sm-6 text-center text-sm-right order-sm-1">
 							<ul className="text-gray">

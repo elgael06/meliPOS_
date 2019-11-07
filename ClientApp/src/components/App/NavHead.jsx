@@ -31,7 +31,7 @@ const ContenWrapperHead =({usuario,evRemoveUser})=>{
         console.log("salir!!!")
         evRemoveUser();
       }
-    return(<div className="t-header-content-wrapper">
+    return(<div className="t-header-content-wrapper bg-gray">
         <div className="t-header-content">
             <button className="t-header-toggler t-header-mobile-toggler d-block d-lg-none">
                 <i className="mdi mdi-menu"></i>

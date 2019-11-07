@@ -1,12 +1,19 @@
 //librerias
-import React from 'react';
+import React,{Fragment,useState} from 'react';
 import { connect } from 'react-redux';
+import Usuarios from './Usuarios';
+import Accesos from './Accesos';
 
 const Admin =()=>{
-
-    return (<div>
-        <label>Este es el Admin...</label>
-    </div>);
+    const [Aplication,setAplication] = useState(null);
+    return (<Fragment>
+        <div className="btn-group mb-0">
+        <a onClick={()=>setAplication(<Usuarios />)} className="btn btn-light">Usuarios</a>
+        <a onClick={()=>setAplication(<Accesos />)} className="btn btn-light">Accesos</a>
+    </div>
+    <hr/>
+    {Aplication || <h3>Seleccione Una Opcion.</h3>}
+    </Fragment>);
 }
 
 const mapStateProps=()=>({
