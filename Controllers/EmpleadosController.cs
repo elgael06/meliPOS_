@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using meliPOS.models;
 
 namespace meliPOS.Controllers
@@ -12,36 +13,85 @@ namespace meliPOS.Controllers
     [ApiController]
     public class EmpleadosController : Controller
     {
+        private readonly MeliPOSDbContext _context;
+        public EmpleadosController(MeliPOSDbContext context)
+        {
+            _context = context;
+        }
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<Empleado> Get()
+        public async Task<ActionResult<IEnumerable<Empleado>>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _context.Empleados.Include(e=>e.datos).ToListAsync();
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Empleado>> Get(int id)
         {
-            return "value";
+            var Empleado = await _context.Empleados.Include(e=>e.datos).ToListAsync();
+            var res = Empleado.Find(e=>e.idEmpleado== id);
+            if(res==null)
+            {
+                return  NotFound();
+            }
+
+            return res;
         }
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public async Task<ActionResult<int>> Post([FromBody]Empleado value)
         {
+            value.datos.Select(e=>{
+                e.fechaAlta = DateTime.Now;
+                return e;
+            });
+            _context.Add(value);
+            try{
+                await _context.SaveChangesAsync();
+                return value.idEmpleado;
+            }catch{
+                return 0;
+            }
         }
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public async Task<ActionResult<Boolean>> Put(int id, [FromBody]Empleado value)
         {
+            if(id != value.idEmpleado)
+            {
+                return false;
+            }
+            try
+            {
+                value.datos.Select(e=>e);
+                _context.Entry(value).State = EntityState.Modified;
+                await _context.SaveChangesAsync(); 
+                AddUsuarioLogin(e:value);
+                return true;
+            }catch
+            {
+                return false;
+            }
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+        private void AddUsuarioLogin(Empleado e)
+        {
+            var usrLog = new usuarioLogin{
+                id=e.idEmpleado,
+                nombre= string.Format("{0} {1} {2} {3}",
+                 e.firstName,e.lastName,e.apPaterno,e.apMaterno),
+                password=e.password
+            };            
+            _context.Add(usrLog);
+            _context.SaveChangesAsync();
         }
     }
 }

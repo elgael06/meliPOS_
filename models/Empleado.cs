@@ -12,7 +12,7 @@ namespace meliPOS.models
         public int idEmpleado {get;set;}
 
         public string codeBarId {get;set;}
-        public EmpleadoData datos {get;set;}
+        public ICollection<EmpleadoData> datos {get;set;}
     }
     public class EmpleadoData : PersonaData
     {
