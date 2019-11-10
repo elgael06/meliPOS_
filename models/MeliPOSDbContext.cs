@@ -7,14 +7,13 @@ namespace meliPOS.models
 {
     public class MeliPOSDbContext : DbContext
     {  
-        public MeliPOSDbContext (DbContextOptions<MeliPOSDbContext> options) : base (options) { }
+        public MeliPOSDbContext (DbContextOptions<MeliPOSDbContext> options) : base (options) {}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("Data Source=local.db",options=>{
-                    
-                });
+                //optionsBuilder.UseSqlite("Filename=local.db" );
+                optionsBuilder.UseMySql("Server=localhost;Database=meliPOS;User=gael;Password=Algn1121@@**;");
             }
         }
          protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -23,5 +22,6 @@ namespace meliPOS.models
         }
 
         public DbSet<usuarioLogin> UsuariosLogin  {get;set;} 
+        public DbSet<Empleado> Empleados {get;set;}
     }
 }

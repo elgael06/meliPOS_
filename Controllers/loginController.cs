@@ -30,7 +30,7 @@ namespace meliPOS.Controllers
 
         }
         [HttpPost("{id}")]
-        public usuarioLogin Post(string id,[FromBody] string password)
+        public usuarioLogin Post(int id,[FromBody] string password)
         {
             Console.WriteLine( String.Format("Usuario: {0} password: {1} ", id,password));
 

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using meliPOS.models;
 
 namespace meliPOS.Migrations
 {
     [DbContext(typeof(MeliPOSDbContext))]
-    partial class MeliPOSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191110035639_empleados")]
+    partial class empleados
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

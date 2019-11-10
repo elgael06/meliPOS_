@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore.Sqlite;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using meliPOS.models;
 
 
@@ -31,7 +31,18 @@ namespace meliPOS
                 configuration.RootPath = "ClientApp/build";
             });
             //var conection = "Data Source=local.db";
+            //services.AddDbContext<MeliPOSDbContext>();
+            // CONFIGURACION DE SQLITE IN-MEMORY
             services.AddDbContext<MeliPOSDbContext>();
+            /*
+             // replace "YourDbContext" with the class name of your DbContext
+                options => options.UseMySql("Server=localhost;Database=meliPOS;User=gael;Password=Algn1121@@**;", // replace with your Connection String
+                    mySqlOptions =>
+                    {
+                        mySqlOptions.ServerVersion(new Version(8, 0, 0), ServerType.MySql); // replace with your Server Version and Type
+                    }
+            )
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
