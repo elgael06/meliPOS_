@@ -20,6 +20,9 @@ const SiderBar =({usuario,change_route})=>{
                 <Link to="/admin" onClick={()=>change_route('/admin')} >ADMIN</Link>
             </li>
             <li className="link-title">
+                <Link to="/users" onClick={()=>change_route('/users')} >USERS</Link>
+            </li>
+            <li className="link-title">
                 <Link to="/sales" onClick={()=>change_route('/sales')} >SALES</Link>
             </li>
             <li className="link-title">

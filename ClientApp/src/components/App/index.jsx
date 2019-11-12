@@ -11,6 +11,10 @@ import Sales from '../Sales';
 import Monitors from '../Monitors';
 import NavHead from './NavHead';
 import SiderBar from './SiderBar';
+import Usuarios from '../Usuarios';
+import EditarUsuario from '../Usuarios/EditarUsuario';
+import AccesosUsuario from '../Usuarios/AccesosUsuario';
+import DeleteUsuario from '../Usuarios/DeleteUsuario';
 
 const App=()=> {
 
@@ -25,6 +29,10 @@ const App=()=> {
 							<Route exact path="/" component={Home} />
 							<Route exact path="/home" component={Home} />
 							<Route exact path="/admin" component={Admin} />
+							<Route exact path="/users" component={Usuarios} />
+							<Route path="/users/edit/:id" component={EditarUsuario} />
+							<Route path="/users/access/:id" component={AccesosUsuario} />
+							<Route path="/users/delete/:id" component={DeleteUsuario} />
 							<Route exact path="/Sales" component={Sales} />
 							<Route exact path="/Monitors" component={Monitors} />
 							<Route exact path="/login" component={()=><Redirect to="/home" />} />
