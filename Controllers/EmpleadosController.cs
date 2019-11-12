@@ -50,6 +50,7 @@ namespace meliPOS.Controllers
             _context.Add(value);
             try{
                 await _context.SaveChangesAsync();
+                AddUsuarioLogin(value);
                 return value.idEmpleado;
             }catch{
                 return 0;
@@ -69,7 +70,7 @@ namespace meliPOS.Controllers
                 value.datos.Select(e=>e);
                 _context.Entry(value).State = EntityState.Modified;
                 await _context.SaveChangesAsync(); 
-                AddUsuarioLogin(e:value);
+                UpdateUsuarioLogin(value);
                 return true;
             }catch
             {
@@ -82,15 +83,21 @@ namespace meliPOS.Controllers
         public void Delete(int id)
         {
         }
+        /*Modoficaciones de UsuarioLogin*/
         private void AddUsuarioLogin(Empleado e)
         {
             var usrLog = new usuarioLogin{
                 id=e.idEmpleado,
                 nombre= string.Format("{0} {1} {2} {3}",
                  e.firstName,e.lastName,e.apPaterno,e.apMaterno),
-                password=e.password
+                password="123456789"
             };            
             _context.Add(usrLog);
+            _context.SaveChangesAsync();
+        }
+        private void UpdateUsuarioLogin(Empleado e)
+        {
+            _context.Entry(e).State = EntityState.Modified;
             _context.SaveChangesAsync();
         }
     }

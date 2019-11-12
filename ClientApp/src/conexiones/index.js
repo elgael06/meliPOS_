@@ -14,5 +14,28 @@ export const inicio_sesion= async (id,password) =>{
         }
     });
     console.log("login=>",respuesta.data);
-    return respuesta.data
+    return respuesta.data;
+}
+/**
+ * Emplados
+ */
+export const agregar_empleado = async value =>{
+    let respuesta = await Axios.post(`${IP}/api/Empleados`,
+    JSON.stringify(value),
+    {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    return respuesta.data;
+}
+
+export const obtener_empleados = async () =>{
+    let respuesta = await Axios.get(`${IP}/api/Empleados`,null,
+    {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    return respuesta.data;
 }

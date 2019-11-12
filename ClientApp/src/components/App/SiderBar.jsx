@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { ADD_ROUTE } from '../../actions';
 
 const SiderBar =({usuario,change_route})=>{
-
     return(<div className="sidebar">
         <div className="user-profile">
             <div className="info-wrapper">

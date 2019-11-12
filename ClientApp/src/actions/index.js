@@ -26,3 +26,11 @@ export const ADD_ROUTE =route=>({
 export const LOGIN_ROUTER =()=>({
     type:'login_route'
 });
+
+/**
+ * Empleados
+ */
+export const AGREGAR_EMPLEADOS = Empleados =>({
+    type:'agregar_empleados',
+    Empleados
+});
