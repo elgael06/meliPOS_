@@ -46,11 +46,7 @@ namespace meliPOS.Controllers
 
                 return usuario;
             }
-            return new usuarioLogin{
-                id=id,
-                nombre="nombre",
-                password=password
-            };
+            return null;
         }
         
     }

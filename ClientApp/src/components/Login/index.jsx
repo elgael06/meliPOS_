@@ -13,7 +13,7 @@ const Login =({actions})=>{
         event.preventDefault();
         try{
             let user = await inicio_sesion(id,password);
-            actions(user)
+            user ?  actions(user) : alert('Error Usuario/Contraseña incorrecto. !!!');
         }catch(err){
             console.log("Error Logeo ...",err);
         }
