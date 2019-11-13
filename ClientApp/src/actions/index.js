@@ -34,3 +34,7 @@ export const AGREGAR_EMPLEADOS = Empleados =>({
     type:'agregar_empleados',
     Empleados
 });
+export const SELECCIONAR_USUARIO = usuario =>({
+    type:'SELECCIONAR_USUARIO',
+    usuario
+});

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ListaUsuarios=({usuarios})=>{
 
-    return(<div className="col-8">
+    return(<div className="col-8" style={{maxHeight:400,overflow:"auto"}}>
         <table className="table">
             <thead>
                 <tr>

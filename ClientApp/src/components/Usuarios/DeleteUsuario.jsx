@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import { connect } from 'react-redux';
-import AgregarUsuario from './AgregarUsuario';
+import { FormUsuario } from './AgregarUsuario';
 
 const DeleteUsuario=({usuario,optenerUsuarioID})=>{
 
@@ -10,7 +10,10 @@ const DeleteUsuario=({usuario,optenerUsuarioID})=>{
     },[])
     return(<div>
         <h3>Eliminar Usuario</h3>
-        <AgregarUsuario disabled={true} />
+        <FormUsuario 
+            disabled={true} 
+            cols="8"
+        />
         <button type="submit" className="btn btn-danger has-icon  float-right">
             Eliminar{"  "}<i className="mdi mdi-close"> </i>
         </button>

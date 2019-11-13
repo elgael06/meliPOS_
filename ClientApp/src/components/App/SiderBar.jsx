@@ -33,7 +33,7 @@ const SiderBar =({usuario,change_route})=>{
 }
 
 const mapStateProps= state=>({
-    usuario:state.Usuario.id
+    usuario:state.Usuario.nombre
 });
 
 const mapDispatchToProps = dispatch =>({

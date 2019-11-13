@@ -80,8 +80,19 @@ namespace meliPOS.Controllers
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<string>> Delete(int id)
         {
+            var user = await _context.Empleados.FindAsync(id);
+            var login = await _context.UsuariosLogin.FindAsync(id);
+            if(user!=null)
+            {
+                _context.Empleados.Remove(user);
+                _context.UsuariosLogin.Remove(login);
+                _context.SaveChangesAsync();
+
+                return user.firstName;
+            }
+            return null;
         }
         /*Modoficaciones de UsuarioLogin*/
         private void AddUsuarioLogin(Empleado e)

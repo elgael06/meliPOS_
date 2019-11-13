@@ -39,3 +39,21 @@ export const obtener_empleados = async () =>{
     });
     return respuesta.data;
 }
+export const obtener_empleado_id = async id =>{
+    let respuesta = await Axios.get(`${IP}/api/Empleados/${id}`,null,
+    {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    return respuesta.data;
+}
+export const actualizar_empleado =async (id,value)=>{
+    let respuesta = await Axios.put(`${IP}/api/Empleados/${id}`,value,
+    {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    return respuesta.data;
+}

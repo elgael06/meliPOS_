@@ -59,7 +59,7 @@ const ContenWrapperHead =({usuario,evRemoveUser})=>{
 }
 
 const mapStateProps= state=>({
-    usuario:state.Usuario.id
+    usuario:state.Usuario.nombre
 });
 
 const mapDispatchToProps = dispatch =>({
