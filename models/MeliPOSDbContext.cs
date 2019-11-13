@@ -23,5 +23,6 @@ namespace meliPOS.models
 
         public DbSet<usuarioLogin> UsuariosLogin  {get;set;} 
         public DbSet<Empleado> Empleados {get;set;}
+        public DbSet<EmpleadoData> EmpleadoData {get;set;}
     }
 }

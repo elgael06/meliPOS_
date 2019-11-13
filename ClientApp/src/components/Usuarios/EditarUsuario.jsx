@@ -39,7 +39,7 @@ const EditarUsuario=({usuario,optenerUsuarioID,evEditarUsuario})=>{
             paterno={usuario.apPaterno || ""}
             materno={usuario.apMaterno || ""}
             evForm={onSubmit}
-            cols="8"
+            cols="6"
         />}
     </div>)
 }

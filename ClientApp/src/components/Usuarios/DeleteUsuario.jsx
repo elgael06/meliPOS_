@@ -33,7 +33,7 @@ const DeleteUsuario=({usuario, evEditarUsuario, optenerUsuarioID})=>{
         <h3>Eliminar Usuario</h3>
         {!usuario||<FormUsuario 
             nombre1={usuario.firstName || ""}
-            nombre2={usuario.lastName || ""}
+            nombre2={usuario.lastName  || ""}
             paterno={usuario.apPaterno || ""}
             materno={usuario.apMaterno || ""}
             disabled={true} 
