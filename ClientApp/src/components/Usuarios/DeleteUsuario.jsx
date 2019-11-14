@@ -37,7 +37,7 @@ const DeleteUsuario=({usuario, optenerUsuarioID})=>{
             paterno={usuario.apPaterno || ""}
             materno={usuario.apMaterno || ""}
             disabled={true} 
-            cols="8"
+            cols="6"
         />}
         <i onClick={onSubmit} className="btn btn-danger has-icon  float-right">
             Eliminar

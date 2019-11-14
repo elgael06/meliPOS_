@@ -21,9 +21,9 @@ const Usuarios =({usuarios,obtenerUsuarios})=>{
         e.apMaterno.toUpperCase().search(filtro.toUpperCase())>-1
     )
 
-    return(<div>
+    return(<div className="bg-white">
         <div className="row">
-            <div className="col-12 card">
+            <div className="col-12">
                 <h3 className="m-3">Usuarios</h3>
                 <div>
                     
