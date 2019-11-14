@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import { connect } from 'react-redux';
-import {Redirect, Link } from "react-router-dom";
+import {Redirect } from "react-router-dom";
 import { FormUsuario } from './AgregarUsuario';
 import { obtener_empleado_id, actualizar_empleado } from '../../conexiones';
 import { SELECCIONAR_USUARIO } from '../../actions';

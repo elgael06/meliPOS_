@@ -83,12 +83,10 @@ namespace meliPOS.Controllers
         public async Task<ActionResult<string>> Delete(int id)
         {
             var user = await _context.Empleados.FindAsync(id);
-            var login = await _context.UsuariosLogin.FindAsync(id);
             if(user!=null)
             {
                 _context.Empleados.Remove(user);
-                _context.UsuariosLogin.Remove(login);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
 
                 return user.firstName;
             }
@@ -110,6 +108,17 @@ namespace meliPOS.Controllers
         {
             _context.Entry(e).State = EntityState.Modified;
             _context.SaveChangesAsync();
+        }
+        private async Task<ActionResult<int>> RemoveUsuario(int id)
+        {
+
+            var login = await _context.UsuariosLogin.FindAsync(id);
+            if(login!=null)
+            {
+                _context.UsuariosLogin.Remove(login);
+                _context.SaveChanges();
+            }
+            return 1;
         }
     }
 }

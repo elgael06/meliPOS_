@@ -57,3 +57,12 @@ export const actualizar_empleado =async (id,value)=>{
     });
     return respuesta.data;
 }
+export const borrar_empleado =async id=>{
+    let respuesta = await Axios.delete(`${IP}/api/Empleados/${id}`,
+    {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    return respuesta.data;
+}

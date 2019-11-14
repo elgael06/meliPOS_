@@ -6,7 +6,7 @@ import { REMOVE_USER, LOGIN_ROUTER } from '../../actions';
 
 const NavHead =({usuario,evRemoveUser})=>{
     return (
-        <nav className="t-header">
+        <nav className="t-header bg-white">
             <BrandWrapperHead />
             <ContenWrapperHead 
                 usuario={usuario} 
@@ -19,9 +19,9 @@ const NavHead =({usuario,evRemoveUser})=>{
 const BrandWrapperHead =()=>(<div className="t-header-brand-wrapper">
         <Link to="/home">
             <span className="logo">
-              <img src="http://melipos.duckdns.org/static/require/images/xfavicon.png.pagespeed.ic.DfbfO32u2z.webp" alt="Logo" />
+              <img src="http://melipos.duckdns.org/sstatic/require/images/xfavicon.png.pagespeed.ic.DfbfO32u2z.webp" alt="Logotipo" />
            </span>
-            <img className="logo-mini" src="http://melipos.duckdns.org/static/require/images/xfavicon.png.pagespeed.ic.DfbfO32u2z.webp" alt="logo mini" />
+            <img className="logo-mini" src="http://melipos.duckdns.org/sstatic/require/images/xfavicon.png.pagespeed.ic.DfbfO32u2z.webp" alt="logo mini" />
         </Link>
     </div>);
 

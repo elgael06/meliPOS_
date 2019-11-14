@@ -15,6 +15,7 @@ import Usuarios from '../Usuarios';
 import EditarUsuario from '../Usuarios/EditarUsuario';
 import AccesosUsuario from '../Usuarios/AccesosUsuario';
 import DeleteUsuario from '../Usuarios/DeleteUsuario';
+import AgregarUsuario from '../Usuarios/AgregarUsuario';
 
 const App=()=> {
 
@@ -22,7 +23,7 @@ const App=()=> {
 	  	<NavHead />
 		<div className="page-body">
 			<SiderBar />
-			<div className="page-content-wrapper bg-white">
+			<div className="page-content-wrapper">
 				<div className="page-content-wrapper-inner">
 					<div className="content-viewport">
 						<Switch>
@@ -30,6 +31,7 @@ const App=()=> {
 							<Route exact path="/home" component={Home} />
 							<Route exact path="/admin" component={Admin} />
 							<Route exact path="/users" component={Usuarios} />
+							<Route exact path="/users/add" component={AgregarUsuario} />
 							<Route path="/users/edit/:id" component={EditarUsuario} />
 							<Route path="/users/access/:id" component={AccesosUsuario} />
 							<Route path="/users/delete/:id" component={DeleteUsuario} />

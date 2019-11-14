@@ -2,22 +2,20 @@ import React,{useEffect,useState} from 'react';
 import { connect } from 'react-redux';
 import { FormUsuario } from './AgregarUsuario';
 import { SELECCIONAR_USUARIO } from '../../actions';
-import { obtener_empleado_id } from '../../conexiones';
+import { obtener_empleado_id, borrar_empleado } from '../../conexiones';
+import { Redirect } from 'react-router-dom';
 
-const DeleteUsuario=({usuario, evEditarUsuario, optenerUsuarioID})=>{
+const DeleteUsuario=({usuario, optenerUsuarioID})=>{
     const [ruta,setRuta] = useState(0);
     const [redirect,setRedirect] = useState(true);
-    const onSubmit= async (value)=>{
-
-        let res = await evEditarUsuario(ruta,
-            {   ...usuario,
-                firstName:value.firstName,
-                lastName:value.lastName,
-                apPaterno:value.apPaterno,
-                apMaterno:value.apMaterno,
-            });
-        res ? setRedirect(false) :function(){
-            alert('Error al Guardar !!!')
+    const onSubmit= async e =>{
+        e.preventDefault();
+        let res = await borrar_empleado(ruta);
+        res ?function(){ 
+            alert(`listo...\n Usuario ${res} fue eliminado !!!`)
+            setRedirect(false)
+         }() :function(){
+            alert('Error al Borrar !!!')
             optenerUsuarioID(ruta)
         }();
     }
@@ -29,7 +27,9 @@ const DeleteUsuario=({usuario, evEditarUsuario, optenerUsuarioID})=>{
     },[])
     console.log("Usuario:",usuario);
     
-    return(<div>
+    return (<div>
+
+        {redirect || <Redirect to="/users" />}
         <h3>Eliminar Usuario</h3>
         {!usuario||<FormUsuario 
             nombre1={usuario.firstName || ""}
@@ -39,9 +39,9 @@ const DeleteUsuario=({usuario, evEditarUsuario, optenerUsuarioID})=>{
             disabled={true} 
             cols="8"
         />}
-        <button type="submit" className="btn btn-danger has-icon  float-right">
-            Eliminar{"  "}<i className="mdi mdi-close"> </i>
-        </button>
+        <i onClick={onSubmit} className="btn btn-danger has-icon  float-right">
+            Eliminar
+        </i>
     </div>)
 }
 
@@ -51,9 +51,6 @@ const mapStateProps=(state)=>({
 });
 
 const mapDispatchToProps = dispatch =>({
-    async evEditarUsuario(usuario){
-        console.log("Usuario => ",usuario);
-    },
     async optenerUsuarioID(id){
         dispatch(SELECCIONAR_USUARIO(null));
         let res = await obtener_empleado_id(id);
