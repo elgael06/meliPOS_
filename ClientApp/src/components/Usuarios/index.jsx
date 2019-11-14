@@ -1,5 +1,5 @@
 //librerias
-import React,{ useEffect } from 'react';
+import React,{ useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { obtener_empleados } from '../../conexiones';
 import { AGREGAR_EMPLEADOS } from '../../actions';
@@ -8,11 +8,19 @@ import ListaUsuarios from './ListaUsuarios';
 const URL = window.location.pathname.split('/');
 
 const Usuarios =({usuarios,obtenerUsuarios})=>{
-    console.log('Usuarios =>' ,usuarios)
-
+    const [filtro,setFiltro] = useState('');
     useEffect(()=>{ 
         obtenerUsuarios();
+        console.log('Usuarios =>' ,usuarios)
+    
     },[])
+
+    const usuariosFiltrados = usuarios.filter(e=>e.firstName.toUpperCase().search(filtro.toUpperCase())>-1 ||
+        e.lastName.toUpperCase().search(filtro.toUpperCase())>-1 ||
+        e.apPaterno.toUpperCase().search(filtro.toUpperCase())>-1 ||
+        e.apMaterno.toUpperCase().search(filtro.toUpperCase())>-1
+    )
+
     return(<div>
         <div className="row">
             <div className="col-12 card">
@@ -21,10 +29,10 @@ const Usuarios =({usuarios,obtenerUsuarios})=>{
                     
                 </div>
                 <div className="form-group">
-                    <input className="form-control" placeholder="Buscar Usuarios" />
+                    <input className="form-control" onChange={e=>setFiltro(e.target.value)} value={filtro.toUpperCase()} placeholder="Buscar Usuarios" />
                 </div>
             </div>
-            <ListaUsuarios usuarios={usuarios} />
+            <ListaUsuarios usuarios={usuariosFiltrados} />
         </div>
     </div>);
 }
