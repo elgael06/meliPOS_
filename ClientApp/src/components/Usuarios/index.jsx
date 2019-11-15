@@ -22,7 +22,7 @@ const Usuarios =({usuarios,obtenerUsuarios})=>{
     )
 
     return(<div className="bg-white">
-        <div className="row">
+        <div className="row m-2">
             <div className="col-12">
                 <h3 className="m-3">Usuarios</h3>
                 <div>

@@ -71,7 +71,7 @@ export const FormUsuario =({disabled=false, nombre1, nombre2, paterno, materno,s
                 <input className="form-control" minLength="4" disabled={disabled} value={apMaterno} onChange={e=>setApMaterno(e.target.value)} />
             </div>
             <div className="col-12">
-            {disabled || <button type="submit" disabled={subministrar} className="btn btn-success has-icon  float-right">
+            {disabled || <button type="submit" disabled={subministrar} className="btn btn-success float-right">
                     Guardar{"  "}
                 </button>}
             </div>

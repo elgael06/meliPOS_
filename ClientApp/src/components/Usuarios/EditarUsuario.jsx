@@ -1,9 +1,10 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState, Fragment} from 'react';
 import { connect } from 'react-redux';
 import {Redirect } from "react-router-dom";
 import { FormUsuario } from './AgregarUsuario';
 import { obtener_empleado_id, actualizar_empleado } from '../../conexiones';
 import { SELECCIONAR_USUARIO } from '../../actions';
+import UsuarioDatos from './UsuarioDatos';
 
 const EditarUsuario=({usuario,optenerUsuarioID,evEditarUsuario})=>{
     const [ruta,setRuta] = useState(0);
@@ -33,14 +34,17 @@ const EditarUsuario=({usuario,optenerUsuarioID,evEditarUsuario})=>{
         {redirect || <Redirect to="/users" />}
 
         <h3 className="col-12">Editar Usuario</h3>
-        {!usuario||<FormUsuario
-            nombre1={usuario.firstName || ""}
-            nombre2={usuario.lastName || ""}
-            paterno={usuario.apPaterno || ""}
-            materno={usuario.apMaterno || ""}
-            evForm={onSubmit}
-            cols="6"
-        />}
+        {!usuario||<Fragment>
+            <FormUsuario
+                nombre1={usuario.firstName || ""}
+                nombre2={usuario.lastName || ""}
+                paterno={usuario.apPaterno || ""}
+                materno={usuario.apMaterno || ""}
+                evForm={onSubmit}
+                cols="6"
+            />
+            <UsuarioDatos datos={usuario.datos[0] || {}} />
+        </Fragment>}
     </div>)
 }
 
