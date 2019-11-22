@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { verificar_datos_empleado } from '../../conexiones'
 
 
 const UsuarioDatos =({datos})=>{
-    const [ine,setIne] = useState(datos['ine_ife']||'')
-    const [curp,setCurp] = useState(datos['curp']||'')
-    const [nss,setNss] = useState(datos['nss']||'')
-    const [info,setinfo] = useState(datos['infonavit']||'')
-    const [fecha,setFecha] = useState(datos['fechaNacimiento']||'')
-    const [rfc,setRfc] = useState(datos['rfc']||'')
-    const [desc,setDesc] = useState(datos['direccion']||'')
+    const [ine,setIne]          = useState(datos['ine_ife']||'')
+    const [curp,setCurp]        = useState(datos['curp']||'')
+    const [nss,setNss]          = useState(datos['nss']||'')
+    const [info,setinfo]        = useState(datos['infonavit']||'')
+    const [fecha,setFecha]      = useState(datos['fechaNacimiento']||'')
+    const [rfc,setRfc]          = useState(datos['rfc']||'')
+    const [desc,setDesc]        = useState(datos['direccion']||'')
+    const [sueldo,setSueldo]    = useState(datos['sueldo']||0)
 
     const evSubmit = e =>{
         e.preventDefault();
-        console.log({
+        const dato_ = {...datos,
             ine_ife:ine,
             curp:curp,
             nss:nss,
@@ -20,11 +22,19 @@ const UsuarioDatos =({datos})=>{
             fechaNacimiento:fecha,
             rfc,
             direccion:desc
-        })
+        };
+        if( verificar_datos_empleado(dato_.idEmpleado))
+            console.log(`Datos Empleado :`,dato_) 
+        else alert(`Èl Id De Usuario ${dato_.idEmpleado} No Existe...`)
     }
 
     return(<form className="col-6 bg-white" onSubmit={evSubmit}>
         <div className="row card-body ">
+
+        <strong className="col-6">SUELDO/MES $</strong>
+        <div className="form-group col-6">
+                <input className="form-control" minLength="1" maxLength="7" required value={sueldo} onChange={e=>setSueldo(e.target.value)} />
+            </div>
             <div className="form-group col-7">
                 <label>IFE/INE</label>
                 <input className="form-control" minLength="13" maxLength="13" required value={ine} onChange={e=>setIne(e.target.value)} />

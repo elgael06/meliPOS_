@@ -2,8 +2,7 @@ import Axios from "axios"
 import { IP } from "./ip"
 
 /** 
- * @param {*} usuario :objeto con dos parametros obligatorios id y password.
- * @description: comprueba el acceso de usuario y retorna true o false crea una cache de sesion. 
+ * Usuario
  */
 export const inicio_sesion= async (id,password) =>{
     let respuesta = await Axios.post(`${IP}/api/login/${id}`,
@@ -12,7 +11,7 @@ export const inicio_sesion= async (id,password) =>{
         headers: {
             'Content-Type': 'application/json',
         }
-    });
+    }).catch(err=>console.log('Error de conexion!!!',err));
     console.log("login=>",respuesta.data);
     return respuesta.data;
 }
@@ -26,7 +25,7 @@ export const agregar_empleado = async value =>{
         headers: {
             'Content-Type': 'application/json',
         }
-    });
+    }).catch(err=>console.log('Error de conexion!!!',err));
     return respuesta.data;
 }
 
@@ -36,17 +35,21 @@ export const obtener_empleados = async () =>{
         headers: {
             'Content-Type': 'application/json',
         }
-    });
+    }).catch(err=>console.log('Error de conexion!!!',err));
     return respuesta.data;
 }
 export const obtener_empleado_id = async id =>{
-    let respuesta = await Axios.get(`${IP}/api/Empleados/${id}`,null,
-    {
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    });
-    return respuesta.data;
+    try{
+        let respuesta = await Axios.get(`${IP}/api/Empleados/${id}`,null,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).catch(err=>console.log('Error de conexion!!!',err));
+        return respuesta.data;
+    }catch{
+        return null;
+    }
 }
 export const actualizar_empleado =async (id,value)=>{
     let respuesta = await Axios.put(`${IP}/api/Empleados/${id}`,value,
@@ -54,7 +57,7 @@ export const actualizar_empleado =async (id,value)=>{
         headers: {
             'Content-Type': 'application/json',
         }
-    });
+    }).catch(err=>console.log('Error de conexion!!!',err));
     return respuesta.data;
 }
 export const borrar_empleado =async id=>{
@@ -63,6 +66,18 @@ export const borrar_empleado =async id=>{
         headers: {
             'Content-Type': 'application/json',
         }
-    });
+    }).catch(err=>console.log('Error de conexion!!!',err));
     return respuesta.data;
 }
+//Datos
+export const verificar_datos_empleado = async id_empleado =>{
+
+    let respuesta = await Axios.get(`${IP}/api/UserData/${id_empleado}`,
+    {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).catch(err=>console.log('Error de conexion!!!',err));
+    return respuesta;
+}
+
