@@ -19,9 +19,9 @@ const NavHead =({usuario,evRemoveUser})=>{
 const BrandWrapperHead =()=>(<div className="t-header-brand-wrapper">
         <Link to="/home">
             <span className="logo">
-              <img src="http://melipos.duckdns.org/sstatic/require/images/xfavicon.png.pagespeed.ic.DfbfO32u2z.webp" alt="Logotipo" />
+              <img src="" alt="Logotipo" />
            </span>
-            <img className="logo-mini" src="http://melipos.duckdns.org/sstatic/require/images/xfavicon.png.pagespeed.ic.DfbfO32u2z.webp" alt="logo mini" />
+            <img className="logo-mini" src="" alt="logo mini" />
         </Link>
     </div>);
 

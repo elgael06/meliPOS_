@@ -1,17 +1,18 @@
 import React,{useEffect,useState, Fragment} from 'react';
 import { connect } from 'react-redux';
-import {Redirect } from "react-router-dom";
+import {Redirect, useParams } from "react-router-dom";
 import { FormUsuario } from './AgregarUsuario';
 import { obtener_empleado_id, actualizar_empleado } from '../../conexiones';
 import { SELECCIONAR_USUARIO } from '../../actions';
 import UsuarioDatos from './UsuarioDatos';
 
 const EditarUsuario=({usuario,optenerUsuarioID,evEditarUsuario})=>{
-    const [ruta,setRuta] = useState(0);
     const [redirect,setRedirect] = useState(true);
+    const {id} = useParams();
+
     const onSubmit= async (value)=>{
 
-        let res = await evEditarUsuario(ruta,
+        let res = await evEditarUsuario(id,
             {   ...usuario,
                 firstName:value.firstName,
                 lastName:value.lastName,
@@ -20,14 +21,12 @@ const EditarUsuario=({usuario,optenerUsuarioID,evEditarUsuario})=>{
             });
         res ? setRedirect(false) :function(){
             alert('Error al Guardar !!!')
-            optenerUsuarioID(ruta)
+            optenerUsuarioID(id)
         }();
     }
     useEffect(()=>{
-        const URL = window.location.pathname.split('/');
-        console.log("URL ",URL[URL.length-1])
-        setRuta(URL[URL.length-1])
-        optenerUsuarioID(URL[URL.length-1]);
+        console.log(`id = ${id}`);
+        optenerUsuarioID(id);
     },[])
     console.log("Usuario:",usuario);
     return(<div className="row">
